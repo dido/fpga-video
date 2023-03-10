@@ -5,7 +5,7 @@
 
 `include "hvsync.v"
 `include "rpll.v"
-`include "digits10.v"
+`include "hexdigits.v"
 `include "smpte.v"
 
 module testpattern(input 	clk,
@@ -75,9 +75,9 @@ module testpattern(input 	clk,
 		   .b(bs[4:0]));
 
    // Bitmap digit ROM
-   digits10 numbers(.digit(digit),
-		    .yofs(yofs),
-		    .bits(bits));
+   hexdigits numbers(.digit(digit),
+		     .yofs(yofs),
+		     .bits(bits));
 
    always @(*)
      case (disp_en)
@@ -108,7 +108,7 @@ module testpattern(input 	clk,
 		begin
 		   // Bitmap ROM characters
 		   rr <= 5'h00;
-		   gg <= ((((xofs ^ 3'b111) < 5) && (yofs < 5) && digit < 10) ? bits[xofs ^ 3'b111] : 0) ? 6'h3f : 6'h00;
+		   gg <= ((((xofs ^ 3'b111) < 5) && (yofs < 5)) ? bits[xofs ^ 3'b111] : 0) ? 6'h3f : 6'h00;
 		   bb <= 5'h00;
 		end
 	      2'b11:
