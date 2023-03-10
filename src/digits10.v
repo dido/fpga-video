@@ -1,5 +1,11 @@
 /* ROM module with 5x5 bitmaps for digits 0-9. Adapted from _Designing
-   Video Game Hardware in Verilog_, by Steven Hugg */
+   Video Game Hardware in Verilog_, by Steven Hugg. Original code
+   extracted from:
+ 
+   https://github.com/sehugg/fpga-examples
+ 
+   licensed under CC0
+ */
 
 module digits10(digit, yofs, bits);
   
