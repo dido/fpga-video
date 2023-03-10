@@ -90,7 +90,7 @@ module testpattern(input 	clk,
        1'b1:
 	 begin
 	    case (mode)
-	      2'b00:
+	      2'b10:
 		begin
 		   // RGB values from SMPTE pattern generator
 		   rr <= rs;
@@ -104,11 +104,11 @@ module testpattern(input 	clk,
        		   gg <= (y[4]) ? 6'h3f : 6'h00;
 		   bb <= (x[4]) ? 5'h1f : 5'h00;
 		end
-	      2'b10:
+	      2'b00:
 		begin
 		   // Bitmap ROM characters
 		   rr <= 5'h00;
-		   gg <= (bits[xofs ^ 3'b111]) ? 6'h3f : 6'h00;
+		   gg <= ((((xofs ^ 3'b111) < 5) && (yofs < 5) && digit < 10) ? bits[xofs ^ 3'b111] : 0) ? 6'h3f : 6'h00;
 		   bb <= 5'h00;
 		end
 	      2'b11:
