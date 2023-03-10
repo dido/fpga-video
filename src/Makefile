@@ -5,7 +5,7 @@ DEVICE=GW1NR-LV9QN88PC6/I5
 all: testpattern.fs
 
 # Synthesis
-testpattern.json: testpattern.v hvsync.v rpll.v
+testpattern.json: testpattern.v hvsync.v rpll.v hexdigits.v
 	yosys -p "read_verilog testpattern.v; synth_gowin -top testpattern -json testpattern.json"
 
 # Place and Route
